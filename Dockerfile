@@ -2,7 +2,6 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src ./src
-
 RUN echo "server.port=8080" > src/main/resources/application.properties && \
     echo "spring.datasource.url=jdbc:mysql://sql5.freesqldatabase.com:3306/sql5825171" >> src/main/resources/application.properties && \
     echo "spring.datasource.username=sql5825171" >> src/main/resources/application.properties && \
@@ -20,7 +19,6 @@ RUN echo "server.port=8080" > src/main/resources/application.properties && \
     echo "spring.mail.properties.mail.smtp.auth=true" >> src/main/resources/application.properties && \
     echo "spring.mail.properties.mail.smtp.starttls.enable=true" >> src/main/resources/application.properties && \
     echo "frontend.url=https://job-tracker-frontend.vercel.app" >> src/main/resources/application.properties
-
 RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:17-jre
