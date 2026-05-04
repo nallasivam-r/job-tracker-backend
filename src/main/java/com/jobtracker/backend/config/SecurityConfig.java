@@ -34,8 +34,9 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfig()))
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
-                .anyRequest().authenticated())
+            	    .requestMatchers("/api/auth/**").permitAll()
+            	    .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+            	    .anyRequest().authenticated())
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
