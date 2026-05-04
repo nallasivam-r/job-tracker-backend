@@ -1,5 +1,5 @@
 package com.jobtracker.backend.config;
-
+import org.springframework.http.HttpMethod;
 import com.jobtracker.backend.security.JwtFilter;
 import com.jobtracker.backend.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Value;
